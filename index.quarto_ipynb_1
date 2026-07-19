@@ -1,0 +1,107 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Gapminder: Example Quarto Report\"\n",
+        "author: \"The GRAPH Courses\"\n",
+        "format: html\n",
+        "---\n",
+        "\n",
+        "This is a Quarto report with a table, a scatter plot, and a map using the Gapminder dataset, Plotly, and itables.\n",
+        "\n",
+        "::: {.panel-tabset} \n",
+        "\n",
+        "## Table"
+      ],
+      "id": "e3d81a07"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from itables import show\n",
+        "import plotly.express as px\n",
+        "\n",
+        "# Load Gapminder dataset\n",
+        "gapminder = px.data.gapminder()\n",
+        "\n",
+        "# Display table\n",
+        "show(gapminder.head())"
+      ],
+      "id": "1b412b9e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Scatter Plot"
+      ],
+      "id": "5612f1d2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "px.scatter(\n",
+        "    gapminder.query(\"year == 2007\"),\n",
+        "    x=\"gdpPercap\",\n",
+        "    y=\"lifeExp\",\n",
+        "    color=\"continent\",\n",
+        "    title=\"GDP vs Life Expectancy (2007)\"\n",
+        ")"
+      ],
+      "id": "22c3bd8e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Map"
+      ],
+      "id": "a235a29d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "px.choropleth(\n",
+        "    gapminder.query(\"year == 2007\"),\n",
+        "    locations=\"iso_alpha\",\n",
+        "    color=\"lifeExp\",\n",
+        "    hover_name=\"country\",\n",
+        "    title=\"Life Expectancy (2007)\",\n",
+        ")"
+      ],
+      "id": "95de71ec",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::\n",
+        "\n",
+        "Sample quarto report from the GRAPH Courses python bootcamp (thegraphcourses.org/pbb)."
+      ],
+      "id": "a837594c"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "graph_courses_python",
+      "language": "python",
+      "display_name": "Python (graph_courses_python)",
+      "path": "C:\\Users\\sirkka.masilo\\AppData\\Roaming\\jupyter\\kernels\\graph_courses_python"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
